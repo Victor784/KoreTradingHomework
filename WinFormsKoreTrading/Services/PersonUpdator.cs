@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
-using WinFormsKoreTrading.Model;
+﻿using WinFormsKoreTrading.Model;
 using System.ComponentModel;
 
 using Timer = System.Windows.Forms.Timer;
@@ -22,7 +16,7 @@ namespace WinFormsKoreTrading.Services
         private static string[] _occupations = { "Engineer", "Doctor", "Artist", "Teacher", "Trader", "Tester" };
         private static string[] _cities = { "Bucuresti", "Cluj-Napoca", "Chicago", "Houston", "New-York" };
 
-        //Enqueueing the new data and triggering a refresh for all elements 
+        //Container for enqueueing the new data and triggering a refresh for all 10.000 elements 
         private ConcurrentQueue<Action> _updateQueue = new ConcurrentQueue<Action>();
         private Control _uiControl;
         public PersonUpdator(BindingList<Person> persons, Control uiControl)
@@ -79,7 +73,7 @@ namespace WinFormsKoreTrading.Services
             }
 
             // Update the UI on the UI thread
-            _uiControl.BeginInvoke((Action)(() =>
+            _uiControl.BeginInvoke((() =>
             {
                 // This will trigger the DataGridView to refresh its display
                 _persons.ResetBindings();

@@ -7,14 +7,14 @@ namespace WinFormsKoreTrading
     public partial class MainForm : Form
     {   
         private BindingList<Person> _persons;
-        private PersonUpdator _dataUpdater;
+        private PersonUpdator _personUpdater;
 
-        public MainForm(BindingList<Person> _pers, PersonUpdator persUpdator)
+        public MainForm(BindingList<Person> pers, PersonUpdator persUpdator)
         {
             InitializeComponent();
             setUpDataGridView();
-            _persons = _pers;
-            _dataUpdater = persUpdator;
+            _persons = pers;
+            _personUpdater = persUpdator;
 
             LoadData();
 
@@ -22,14 +22,7 @@ namespace WinFormsKoreTrading
         }
         private void LoadData()
         {
-            //TODO move this to some init method or change the name of the data
-            //dataGridView1.VirtualMode = true;
-            //dataGridView1.CellValueNeeded += dataGridView1_CellValueNeeded;
-
             dataGridView1.DataSource = _persons;
-            //dataGridView1.ReadOnly = true;
-            //dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            //dataGridView1.Dock = DockStyle.Fill;
         }
 
         private void setUpDataGridView()
@@ -72,7 +65,7 @@ namespace WinFormsKoreTrading
         {
             if (e.KeyCode == Keys.Space)
             {
-                MainForm newForm = new MainForm(_persons, _dataUpdater);
+                MainForm newForm = new MainForm(_persons, _personUpdater);
                 newForm.Show();
             }
         }

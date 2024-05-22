@@ -12,9 +12,8 @@ namespace WinFormsKoreTrading
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            BindingList<Person> _persons = new BindingList<Person>(PersonGenerator.GeneratePersons(10000));
+            int nrOfPersons = 10000;
+            BindingList<Person> _persons = new BindingList<Person>(PersonGenerator.GeneratePersons(nrOfPersons));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

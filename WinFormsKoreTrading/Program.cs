@@ -14,14 +14,14 @@ namespace WinFormsKoreTrading
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            //ApplicationConfiguration.Initialize();
-            //Application.Run(new MainForm());
-             BindingList<Person> _persons = new BindingList<Person>(PersonGenerator.GeneratePersons(10000));
-
+            BindingList<Person> _persons = new BindingList<Person>(PersonGenerator.GeneratePersons(10000));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            MainForm mainForm = new MainForm(_persons);
+            PersonUpdator _persUpdator = new PersonUpdator(_persons, null);
+
+            MainForm mainForm = new MainForm(_persons, _persUpdator);
+            _persUpdator.SetUIControl(mainForm);
             Application.Run(mainForm);
 
         }
